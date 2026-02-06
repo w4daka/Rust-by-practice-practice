@@ -98,3 +98,20 @@ Success!
 
 [Process exited 0]
 ```
+
+消せばいいってこと？
+そうじゃねえだろ
+
+- help: if this is intentional, prefix it with an underscore: `_y`→「もしこれが意図的なもの（あえて使っていないの）なら、接頭辞にアンダースコアをつけて \_y にしてください
+
+これで通った。
+
+```rust
+fn main() {
+    let x: i32 = 5;
+    let _y: i32;
+
+    assert_eq!(x, 5);
+    println!("Success!")
+}
+```
