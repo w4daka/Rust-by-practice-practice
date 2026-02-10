@@ -1,7 +1,9 @@
-fn main() {
-    let x: i32 = 5;
-    let _y: i32;
 
-    assert_eq!(x, 5);
-    println!("Success!")
+// Fill the blanks in the code to make it compile
+fn main() {
+    let __ __ = 1;
+    __ += 2; 
+    
+    assert_eq!(x, 3);
+    println!("Success!");
 }
