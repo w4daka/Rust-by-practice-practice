@@ -145,3 +145,130 @@ fn main() {
     println!("Success!");
 }
 ```
+
+## Scope
+
+### A scope is the range within the program for which the item is valid
+
+和訳「スコープとは、プログラム内において、ある項目（変数や関数など）が有効である範囲のことです。」
+
+次のcodeを実行すると
+
+```rust
+// Fix the error below with least amount of modification
+fn main() {
+    let x: i32 = 10;
+    {
+        let y: i32 = 5;
+        println!("Inner scope value of x is {} and value of y is {}", x, y);
+    }
+    println!("Outer scope value of x is {} and value of y is {}", x, y);
+}
+```
+
+以下のようなerror
+
+```shell
+   Compiling scope v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope)
+error[E0425]: cannot find value `y` in this scope
+ --> src/main.rs:8:70
+  |
+8 |     println!("Outer scope value of x is {} and value of y is {}", x, y);
+  |                                                                      ^
+  |
+help: the binding `y` is available in a different scope in the same function
+ --> src/main.rs:5:13
+  |
+5 |         let y: i32 = 5;
+  |             ^
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `scope` (bin "scope") due to 1 previous error
+
+[Process exited 101]
+```
+
+和訳してみる
+
+- error[E0425]: cannot find value `y` in this scope
+- スコープ内でyというvalueを見つけられない。
+- value = 「値」「変数」
+- help: the binding `y` is available in a different scope in the same function
+- 束縛された`y`を同じ変数として異なるscopeで有効にすることが解決策ではなく`y`という名前の束縛自体は別の場所にある。ということ。
+  外に出したら解決したがerrorの説明も見る
+
+  解決したcode
+
+```rust
+fn main() {
+    let x: i32 = 10;
+    let y;
+    {
+        y = 32;
+        println!("Inner scope value of x is {} and value of y is {}", x, y);
+    }
+    println!("Outer scope value of x is {} and value of y is {}", x, y);
+}
+```
+
+#### エラーの説明
+
+An unresolved name was used.
+
+Erroneous code examples:
+
+```rust
+something_that_doesnt_exist::foo;
+// error: unresolved name `something_that_doesnt_exist::foo`
+
+// or:
+
+trait Foo {
+    fn bar() {
+        Self; // error: unresolved name `Self`
+    }
+}
+
+// or:
+
+let x = unknown_variable;  // error: unresolved name `unknown_variable`
+```
+
+Please verify that the name wasn't misspelled and ensure that the
+identifier being referred to is valid for the given situation. Example:
+
+```
+enum something_that_does_exist {
+    Foo,
+}
+```
+
+Or:
+
+```
+mod something_that_does_exist {
+    pub static foo : i32 = 0i32;
+}
+
+something_that_does_exist::foo; // ok!
+```
+
+Or:
+
+```
+let unknown_variable = 12u32;
+let x = unknown_variable; // ok!
+```
+
+If the item is not defined in the current module, it must be imported using a
+`use` statement, like so:
+
+```
+use foo::bar;
+bar();
+```
+
+If the item you are importing is not defined in some super-module of the
+current module, then it must also be declared as public (e.g., `pub fn`).
+
+---
