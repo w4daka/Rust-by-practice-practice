@@ -115,11 +115,11 @@ something_that_does_exist::foo; // ok!
 Or:
 
 let unknown_variable = 12u32;
-let x = unknown_variable; // ok!
+let x = unknown_variable; // ok!これはわかる。
 ```
 
 If the item is not defined in the current module, it must be imported using a
-`use` statement, like so:
+`use` statement, like so:(もし現在のモジュールで定義されてないものがあるなら、それはuse statementを使ってインポートしなくてはならない。)
 
 ```rust
 use foo::bar;
@@ -127,7 +127,7 @@ bar();
 ```
 
 If the item you are importing is not defined in some super-module of the
-current module, then it must also be declared as public (e.g., `pub fn`).
+current module, then it must also be declared as public (e.g., `pub fn`).(現在のモジュールのいくつかの親モジュールで定義されていないあなたがインポートしているものがあるなら、そのときpublicとして宣言しなくてはならない。)
 
 ---
 
