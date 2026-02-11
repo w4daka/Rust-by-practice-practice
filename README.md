@@ -257,6 +257,8 @@ mod something_that_does_exist {
 }
 
 something_that_does_exist::foo; // ok!
+//mod something_that_does_exist{ ... }=Moduleの定義。以前は存在しなかった「something_that_does_existという名前の空間」を、今この場で作成した。
+//
 
 Or:
 
