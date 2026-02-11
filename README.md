@@ -238,7 +238,7 @@ trait Foo {
 
 // or:
 
-let x = unknown_variable;  // error: unresolved name `unknown_variable`
+let x = unknown_variable;  // error: unresolved name `unknown_variable`そのまま
 ```
 
 Please verify that the name wasn't misspelled and ensure that the
@@ -248,6 +248,7 @@ identifier being referred to is valid for the given situation. Example:
 enum something_that_does_exist {
     Foo,
 }
+//something_that_does_existという名前の新しい型を作り、その中にFooという選択肢(値)を用意した。(補足参照)
 
 
 Or:
@@ -428,3 +429,83 @@ impl SmartDevice for SecurityCamera {
 
 - **楽ができる：** 同じコードを何度も書かなくて済む。
 - **最低限の保証：** そのトレイトを実装しさえすれば、細かい設定をしなくても「最低限これだけは動く」という状態にできる。
+
+#### Enumの定義
+
+このコードは、Rustにおける**列挙型（Enum）**の定義です。
+以前出てきた `something_that_doesnt_exist::foo` （存在しないもの）とは対照的に、今回は「ちゃんと存在する（does exist）」ものとして定義されていますね。
+
+文法構造と、これがプログラムの中でどう機能するかを解説します。
+
+---
+
+1. 文法の分解
+
+- **`enum` (キーワード)**:
+  「列挙型」を定義することを宣言しています。列挙型とは、**「いくつかの選択肢の中から、必ずどれか一つになる型」**のことです。
+- **`something_that_does_exist` (型名)**:
+  この新しいデータ型の名前です。
+- **`{ Foo, }` (バリアント)**:
+  この型が持ち得る具体的な選択肢です。この場合、選択肢は `Foo` 一つだけですが、カンマ区切りで増やすことができます（例：`Foo, Bar, Baz`）。
+
+---
+
+2. 以前のエラーとの関係
+
+以前のやり取りにあった `something_that_doesnt_exist::foo` がエラーになったのは、定義がなかったからです。今回のコードを書くことで、以下のように呼び出すことが可能になります。
+
+```rust
+// 定義があるから、今度は「解決（Resolve）」できる！
+let x = something_that_does_exist::Foo;
+
+```
+
+このように、`::` を使って「`something_that_does_exist` という型の中にある `Foo` という値」を指定できるようになります。
+
+---
+
+3. なぜ Enum を使うのか？（「状態」の定義）
+
+Enumは、複数の状態をひとまとめに扱いたいときに非常に便利です。
+
+例えば、信号機をプログラムにするなら、バラバラの変数を作るよりも Enum が最適です。
+
+```rust
+enum TrafficLight {
+    Red,
+    Yellow,
+    Green,
+}
+
+```
+
+「信号の色」という一つのカテゴリの中に、複数のパターンを閉じ込めることができます。
+
+---
+
+4. 前の `Self` のエラーと繋げて考えると
+
+もし、この `enum` に対してトレイトを実装しようとすると、こうなります。
+
+```rust
+trait Check {
+    fn is_foo(&self);
+}
+
+impl Check for something_that_does_exist {
+    fn is_foo(&self) {
+        // ここで Self（大文字）を使うと
+        // 「something_that_does_exist」という型そのものを指す
+    }
+}
+
+```
+
+- **`something_that_does_exist`**: 型の名前（設計図）
+- **`something_that_does_exist::Foo`**: 具体的な値（実体）
+
+---
+
+まとめ
+
+このコードは、**「`something_that_does_exist` という名前の新しい型を作り、その中に `Foo` という選択肢（値）を用意した」**という状態です。
