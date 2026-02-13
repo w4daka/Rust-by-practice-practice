@@ -9,3 +9,4 @@ Rust by Practiceをやりながらエラーコードの解説と解決をして�
 ## 進捗
 
 2026/02/11 Variable 終りました。
+2026/02/13 I finished No.3
