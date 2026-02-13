@@ -1,59 +1,12 @@
-   0.034560732s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint: stale: changed "/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs"
-   0.034593038s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:           (vs) "/home/doxaripo/projects/rust_by_practice/scope2/target/debug/.fingerprint/scope2-984562e2c65bc083/dep-bin-scope2"
-   0.034597045s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1770965303, nanos: 129753315 } < FileTime { seconds: 1770968722, nanos: 60087373 }
-   0.034620125s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint: fingerprint dirty for scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2)/Check { test: false }/TargetInner { name: "scope2", doc: true, ..: with_path("/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs", Edition2024) }
-   0.034631415s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/home/doxaripo/projects/rust_by_practice/scope2/target/debug/.fingerprint/scope2-984562e2c65bc083/dep-bin-scope2", reference_mtime: FileTime { seconds: 1770965303, nanos: 129753315 }, stale: "/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs", stale_mtime: FileTime { seconds: 1770968722, nanos: 60087373 } }))
-   0.034769843s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint: stale: changed "/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs"
-   0.034772104s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:           (vs) "/home/doxaripo/projects/rust_by_practice/scope2/target/debug/.fingerprint/scope2-722b92d459853a5f/dep-test-bin-scope2"
-   0.034774058s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1770965303, nanos: 129753315 } < FileTime { seconds: 1770968722, nanos: 60087373 }
-   0.034785591s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint: fingerprint dirty for scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2)/Check { test: true }/TargetInner { name: "scope2", doc: true, ..: with_path("/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs", Edition2024) }
-   0.034789882s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/home/doxaripo/projects/rust_by_practice/scope2/target/debug/.fingerprint/scope2-722b92d459853a5f/dep-test-bin-scope2", reference_mtime: FileTime { seconds: 1770965303, nanos: 129753315 }, stale: "/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs", stale_mtime: FileTime { seconds: 1770968722, nanos: 60087373 } }))
-   0.034909319s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="function02"}: cargo::core::compiler::fingerprint: fingerprint error for scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2)/Check { test: false }/TargetInner { kind: "example", name: "function02", tested: false, benched: false, ..: with_path("/home/doxaripo/projects/rust_by_practice/scope2/examples/function02.rs", Edition2024) }
-   0.034931248s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="function02"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/doxaripo/projects/rust_by_practice/scope2/target/debug/.fingerprint/scope2-f064c95806537c50/example-function02`
-
-Caused by:
-    No such file or directory (os error 2)
-
-Stack backtrace:
-   0: cargo_util::paths::read_bytes
-   1: cargo_util::paths::read
-   2: cargo::core::compiler::fingerprint::_compare_old_fingerprint
-   3: cargo::core::compiler::fingerprint::prepare_target
-   4: cargo::core::compiler::compile
-   5: <cargo::core::compiler::build_runner::BuildRunner>::compile
-   6: cargo::ops::cargo_compile::compile_ws
-   7: cargo::ops::cargo_compile::compile_with_exec
-   8: cargo::ops::cargo_compile::compile
-   9: cargo::commands::check::exec
-  10: <cargo::cli::Exec>::exec
-  11: cargo::main
-  12: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
-  13: std::rt::lang_start::<()>::{closure#0}
-  14: core::ops::function::impls::<impl core::ops::function::FnOnce<A> for &F>::call_once
-             at /rustc/254b59607d4417e9dffbc307138ae5c86280fe4c/library/core/src/ops/function.rs:287:21
-  15: std::panicking::catch_unwind::do_call
-             at /rustc/254b59607d4417e9dffbc307138ae5c86280fe4c/library/std/src/panicking.rs:581:40
-  16: std::panicking::catch_unwind
-             at /rustc/254b59607d4417e9dffbc307138ae5c86280fe4c/library/std/src/panicking.rs:544:19
-  17: std::panic::catch_unwind
-             at /rustc/254b59607d4417e9dffbc307138ae5c86280fe4c/library/std/src/panic.rs:359:14
-  18: std::rt::lang_start_internal::{{closure}}
-             at /rustc/254b59607d4417e9dffbc307138ae5c86280fe4c/library/std/src/rt.rs:175:24
-  19: std::panicking::catch_unwind::do_call
-             at /rustc/254b59607d4417e9dffbc307138ae5c86280fe4c/library/std/src/panicking.rs:581:40
-  20: std::panicking::catch_unwind
-             at /rustc/254b59607d4417e9dffbc307138ae5c86280fe4c/library/std/src/panicking.rs:544:19
-  21: std::panic::catch_unwind
-             at /rustc/254b59607d4417e9dffbc307138ae5c86280fe4c/library/std/src/panic.rs:359:14
-  22: std::rt::lang_start_internal
-             at /rustc/254b59607d4417e9dffbc307138ae5c86280fe4c/library/std/src/rt.rs:171:5
-  23: main
-  24: __libc_start_call_main
-             at ./csu/../sysdeps/nptl/libc_start_call_main.h:58:16
-  25: __libc_start_main_impl
-             at ./csu/../csu/libc-start.c:360:3
-  26: <unknown>
+   0.008132214s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint: stale: changed "/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs"
+   0.008159571s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:           (vs) "/home/doxaripo/projects/rust_by_practice/scope2/target/debug/.fingerprint/scope2-984562e2c65bc083/dep-bin-scope2"
+   0.008163288s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1770974533, nanos: 843121941 } < FileTime { seconds: 1770974566, nanos: 791536060 }
+   0.008186080s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint: fingerprint dirty for scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2)/Check { test: false }/TargetInner { name: "scope2", doc: true, ..: with_path("/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs", Edition2024) }
+   0.008192940s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/home/doxaripo/projects/rust_by_practice/scope2/target/debug/.fingerprint/scope2-984562e2c65bc083/dep-bin-scope2", reference_mtime: FileTime { seconds: 1770974533, nanos: 843121941 }, stale: "/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs", stale_mtime: FileTime { seconds: 1770974566, nanos: 791536060 } }))
+   0.008324338s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint: stale: changed "/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs"
+   0.008326320s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:           (vs) "/home/doxaripo/projects/rust_by_practice/scope2/target/debug/.fingerprint/scope2-722b92d459853a5f/dep-test-bin-scope2"
+   0.008328194s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1770974533, nanos: 843121941 } < FileTime { seconds: 1770974566, nanos: 791536060 }
+   0.008338891s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint: fingerprint dirty for scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2)/Check { test: true }/TargetInner { name: "scope2", doc: true, ..: with_path("/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs", Edition2024) }
+   0.008342650s  INFO prepare_target{force=false package_id=scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2) target="scope2"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/home/doxaripo/projects/rust_by_practice/scope2/target/debug/.fingerprint/scope2-722b92d459853a5f/dep-test-bin-scope2", reference_mtime: FileTime { seconds: 1770974533, nanos: 843121941 }, stale: "/home/doxaripo/projects/rust_by_practice/scope2/src/main.rs", stale_mtime: FileTime { seconds: 1770974566, nanos: 791536060 } }))
     Checking scope2 v0.1.0 (/home/doxaripo/projects/rust_by_practice/scope2)
-error: could not compile `scope2` (bin "scope2" test) due to 1 previous error
-warning: build failed, waiting for other jobs to finish...
-error: could not compile `scope2` (bin "scope2") due to 1 previous error
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
