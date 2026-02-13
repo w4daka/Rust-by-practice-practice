@@ -6,5 +6,5 @@ fn main() {
         println!("Inner scope value of x is {} and value of y is {}", x, y);
         y
     };
-    println!("Outer scope value of x is {} and value is{}", x, y);
+    println!("Outer scope value of x is {} and value is {}", x, y);
 }
