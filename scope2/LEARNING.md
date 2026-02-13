@@ -48,3 +48,21 @@ tted
 - 警告：変数`x`が使われていない。
 
 なんとなく思うのは`let x`を宣言してさらにdefine_xの戻り値をそれに代入すればいいのでは？
+次のようなコードでもダメだった。
+
+```rust
+
+// Fix the error with the use of define_x
+fn main() {
+    println!("{}, world", define_x());
+}
+
+fn define_x() {
+    let x = "hello";
+    println!("{}", x)
+}
+```
+
+## [関数のThe book](https://doc.rust-jp.rs/book-ja/ch03-03-how-functions-work.html) を見る
+
+関数シグニチャ= 関数宣言のこと。
